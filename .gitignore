@@ -6,7 +6,7 @@ obj/
 *.suo
 .vs/
 /.vs
-/.idea
+.idea
 
 # Logs
 *.log
@@ -16,6 +16,6 @@ packages/
 *.nupkg
 
 # Environment-specific files
-
+appsettings.json
 appsettings.*.json
 secrets.json
