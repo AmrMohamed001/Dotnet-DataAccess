@@ -1,4 +1,29 @@
+# Build directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+.vs/
 /.vs
-dapperOrm/appsettings.json
-efcoreOrm/appsettings.json
-/ReverseEngineering/appsettings.json
+
+# Logs
+*.log
+
+# NuGet packages
+packages/
+*.nupkg
+
+# Environment-specific files
+appsettings.json
+appsettings.*.json
+secrets.json
+
+# Publish outputs
+wwwroot/
+dist/
+
+# Generated files
+*.Generated.cs
+Service References/
