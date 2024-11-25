@@ -2,10 +2,8 @@
 
 namespace efcoreOrm.Data;
 
-[Table("tblTweet")]
 public class Comment
 {
-    [Column("CommentId")]
     public int Id { get; set; }
     public int UserId { get; set; }
     public int TweetId { get; set; }
