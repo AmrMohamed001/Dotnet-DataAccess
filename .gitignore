@@ -1,3 +1,4 @@
 /.vs
 dapperOrm/appsettings.json
 efcoreOrm/appsettings.json
+/ReverseEngineering/appsettings.json
