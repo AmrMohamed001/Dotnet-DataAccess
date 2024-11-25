@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dapperOrm", "dapperOrm\dapp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "efcoreOrm", "efcoreOrm\efcoreOrm.csproj", "{5A5EFD6F-6F1B-46D2-BC74-F6E7AB6B7458}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverseEngineering", "ReverseEngineering\ReverseEngineering.csproj", "{900BF88B-A1C4-47C7-93D6-A5E56A472745}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5A5EFD6F-6F1B-46D2-BC74-F6E7AB6B7458}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A5EFD6F-6F1B-46D2-BC74-F6E7AB6B7458}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A5EFD6F-6F1B-46D2-BC74-F6E7AB6B7458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{900BF88B-A1C4-47C7-93D6-A5E56A472745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900BF88B-A1C4-47C7-93D6-A5E56A472745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900BF88B-A1C4-47C7-93D6-A5E56A472745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900BF88B-A1C4-47C7-93D6-A5E56A472745}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
