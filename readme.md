@@ -25,8 +25,3 @@ The primary purpose of this repository is educational. It demonstrates:
 - How to use ADO.NET, Dapper, and Entity Framework Core effectively.
 - Practical examples of both **Code-First** and **Database-First** workflows.
 
-## Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
