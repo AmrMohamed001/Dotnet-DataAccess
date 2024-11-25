@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\Projects\\Back-End using Dotnet\\Dotnet-DataAccess\\dapperOrm\\dapperOrm.csproj": {}
+    "D:\\me\\Codes\\Dotnet\\repos\\DataAccess\\dapperOrm\\dapperOrm.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\Projects\\Back-End using Dotnet\\Dotnet-DataAccess\\dapperOrm\\dapperOrm.csproj": {
+    "D:\\me\\Codes\\Dotnet\\repos\\DataAccess\\dapperOrm\\dapperOrm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\Projects\\Back-End using Dotnet\\Dotnet-DataAccess\\dapperOrm\\dapperOrm.csproj",
+        "projectUniqueName": "D:\\me\\Codes\\Dotnet\\repos\\DataAccess\\dapperOrm\\dapperOrm.csproj",
         "projectName": "dapperOrm",
-        "projectPath": "D:\\Programming\\Projects\\Back-End using Dotnet\\Dotnet-DataAccess\\dapperOrm\\dapperOrm.csproj",
-        "packagesPath": "C:\\Users\\amrmo\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\Projects\\Back-End using Dotnet\\Dotnet-DataAccess\\dapperOrm\\obj\\",
+        "projectPath": "D:\\me\\Codes\\Dotnet\\repos\\DataAccess\\dapperOrm\\dapperOrm.csproj",
+        "packagesPath": "C:\\Users\\P3\\.nuget\\packages\\",
+        "outputPath": "D:\\me\\Codes\\Dotnet\\repos\\DataAccess\\dapperOrm\\obj\\",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\amrmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\P3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
