@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ado")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31982bdd1621c282cb5903278748c7784b7c9b39")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0a4d2b1f410320768a7d59bb888b81a76034b01")]
 [assembly: System.Reflection.AssemblyProductAttribute("ado")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ado")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

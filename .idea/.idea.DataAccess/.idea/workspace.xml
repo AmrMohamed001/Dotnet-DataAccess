@@ -12,9 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c26fb029-9035-43de-8987-fb2c7db0af5e" name="Changes" comment="configure using grouping configuration">
-      <change afterPath="$PROJECT_DIR$/ReverseEngineering/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReverseEngineering/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReverseEngineering/obj/Debug/net8.0/ReverseEngineering.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ReverseEngineering/obj/Debug/net8.0/ReverseEngineering.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReverseEngineering/obj/Debug/net8.0/ReverseEngineering.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ReverseEngineering/obj/Debug/net8.0/ReverseEngineering.AssemblyInfoInputs.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +80,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -168,7 +168,7 @@
       <updated>1732361727183</updated>
       <workItem from="1732361732831" duration="3923000" />
       <workItem from="1732518791179" duration="111000" />
-      <workItem from="1732519052304" duration="8496000" />
+      <workItem from="1732519052304" duration="12501000" />
     </task>
     <task id="LOCAL-00001" summary="adding Dapper.orm first commit 🚀">
       <option name="closed" value="true" />

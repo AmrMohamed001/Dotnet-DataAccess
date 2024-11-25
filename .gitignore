@@ -1,12 +1,12 @@
 # Build directories
 bin/
 obj/
-
 # User-specific files
 *.user
 *.suo
 .vs/
 /.vs
+/.idea
 
 # Logs
 *.log
@@ -16,14 +16,6 @@ packages/
 *.nupkg
 
 # Environment-specific files
-appsettings.json
+
 appsettings.*.json
 secrets.json
-
-# Publish outputs
-wwwroot/
-dist/
-
-# Generated files
-*.Generated.cs
-Service References/
