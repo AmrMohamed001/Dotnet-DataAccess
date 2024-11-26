@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReverseEngineering", "Rever
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityTypes and Mapping", "DataTypes and Mapping\EntityTypes and Mapping.csproj", "{19CC10B9-1C2A-4C4E-9AC8-9D851B56F553}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirstMigrations", "CodeFirstMigrations\CodeFirstMigrations.csproj", "{7C5D8A34-11A7-412B-99AC-D7712F6A25ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFCore", "EFCore", "{87599F90-E6B2-48C6-9706-12799A9B6594}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,19 @@ Global
 		{19CC10B9-1C2A-4C4E-9AC8-9D851B56F553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19CC10B9-1C2A-4C4E-9AC8-9D851B56F553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19CC10B9-1C2A-4C4E-9AC8-9D851B56F553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5D8A34-11A7-412B-99AC-D7712F6A25ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5D8A34-11A7-412B-99AC-D7712F6A25ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5D8A34-11A7-412B-99AC-D7712F6A25ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5D8A34-11A7-412B-99AC-D7712F6A25ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A5EFD6F-6F1B-46D2-BC74-F6E7AB6B7458} = {87599F90-E6B2-48C6-9706-12799A9B6594}
+		{900BF88B-A1C4-47C7-93D6-A5E56A472745} = {87599F90-E6B2-48C6-9706-12799A9B6594}
+		{19CC10B9-1C2A-4C4E-9AC8-9D851B56F553} = {87599F90-E6B2-48C6-9706-12799A9B6594}
+		{7C5D8A34-11A7-412B-99AC-D7712F6A25ED} = {87599F90-E6B2-48C6-9706-12799A9B6594}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {655529F4-BEC1-49A3-AB38-6A3149288A57}
