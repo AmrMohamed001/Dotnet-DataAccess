@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CodeFirstMigrations.Data.Config
 {
-    internal class StudentConfig : IEntityTypeConfiguration<Student>
+    internal class ParticpantConfiguration : IEntityTypeConfiguration<Participator>
     {
-        public void Configure(EntityTypeBuilder<Student> builder)
+        public void Configure(EntityTypeBuilder<Participator> builder)
         {
             // Id
             builder.HasKey(x => x.Id);
@@ -21,7 +21,7 @@ namespace CodeFirstMigrations.Data.Config
             //Loading data
             builder.HasData(LoadData());
 
-            builder.ToTable("Students");
+            builder.ToTable("Participators");
 
         }
 

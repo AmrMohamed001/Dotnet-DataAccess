@@ -15,6 +15,6 @@
 
         public ICollection<Schedule> Schedules { get; set; } = new List<Schedule>();
         public ICollection<SectionSchedule> SectionSchedules { get; set; } = new List<SectionSchedule>();
-        public ICollection<Student> Students { get; set; }
+        public ICollection<Participator> Participators { get; set; }
     }
 }

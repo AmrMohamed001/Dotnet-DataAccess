@@ -1,5 +1,6 @@
 ﻿using CodeFirstMigrations.Data;
-using Microsoft.EntityFrameworkCore;
+using CodeFirstMigrations.Entities;
+
 
 namespace CodeFirstMigrations
 {
@@ -8,11 +9,13 @@ namespace CodeFirstMigrations
         static void Main(string[] args)
         {
             var context = new AppDbContext();
+            var Participator1 = new Individual { Id = 6, IsIntern = true, YearOfGraduation = 2024, University = "Damietta" };
+            var Participator2 = new Coporate { Id = 7, Company = "Cairo", JobTitle = "BackEnd" };
 
-            foreach (var item in context.Sections.Include(x => x.Course))
-            {
-                Console.WriteLine($"{item.SectionName} belong to {item.Course.CourseName}");
-            }
+            context.Add(Participator1);
+            context.Add(Participator2);
+            context.SaveChanges();
+            // Table per hierarchy is the default mapping strategy => making one table having the all 3 tables
         }
     }
 }

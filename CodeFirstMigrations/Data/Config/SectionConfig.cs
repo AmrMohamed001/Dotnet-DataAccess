@@ -25,7 +25,7 @@ namespace CodeFirstMigrations.Data.Config
             builder.HasMany(c => c.Schedules).WithMany(x => x.Sections).UsingEntity<SectionSchedule>();
 
             // Enrollment relationship (M:M)
-            builder.HasMany(c => c.Students).WithMany(x => x.Sections).UsingEntity<Enrollment>();
+            builder.HasMany(c => c.Participators).WithMany(x => x.Sections).UsingEntity<Enrollment>();
 
             //Loading data
             builder.HasData(LoadData());
