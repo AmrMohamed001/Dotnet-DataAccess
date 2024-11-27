@@ -7,6 +7,6 @@
         public string? OfficeLocation { get; set; }
 
         //Office has one instructor(1:1)
-        public Instructor? Instructor { get; set; }
+        public Instructor? Instructor { get; set; } = null!;
     }
 }

@@ -4,6 +4,7 @@ using CodeFirstMigrations.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeFirstMigrations.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241127065134_Add-many-to-many-section-schedule")]
+    partial class Addmanytomanysectionschedule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,73 +73,6 @@ namespace CodeFirstMigrations.Migrations
                             Id = 5,
                             CourseName = "CS-50",
                             Price = 10000m
-                        });
-                });
-
-            modelBuilder.Entity("CodeFirstMigrations.Entities.Enrollment", b =>
-                {
-                    b.Property<int>("SectionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SectionId", "StudentId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("Enrollments", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            SectionId = 1,
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            SectionId = 1,
-                            StudentId = 2
-                        },
-                        new
-                        {
-                            SectionId = 2,
-                            StudentId = 3
-                        },
-                        new
-                        {
-                            SectionId = 2,
-                            StudentId = 4
-                        },
-                        new
-                        {
-                            SectionId = 3,
-                            StudentId = 5
-                        },
-                        new
-                        {
-                            SectionId = 3,
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            SectionId = 4,
-                            StudentId = 2
-                        },
-                        new
-                        {
-                            SectionId = 4,
-                            StudentId = 3
-                        },
-                        new
-                        {
-                            SectionId = 5,
-                            StudentId = 4
-                        },
-                        new
-                        {
-                            SectionId = 5,
-                            StudentId = 5
                         });
                 });
 
@@ -530,75 +466,6 @@ namespace CodeFirstMigrations.Migrations
                             SectionId = 5,
                             StartTime = new TimeSpan(0, 9, 0, 0, 0)
                         });
-                });
-
-            modelBuilder.Entity("CodeFirstMigrations.Entities.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FName")
-                        .HasMaxLength(200)
-                        .HasColumnType("VARCHAR");
-
-                    b.Property<string>("LName")
-                        .HasMaxLength(200)
-                        .HasColumnType("VARCHAR");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Students", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FName = "Ahmed",
-                            LName = "test1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            FName = "Mohamed",
-                            LName = "test2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            FName = "Amr",
-                            LName = "test3"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            FName = "Salah",
-                            LName = "test4"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            FName = "Max",
-                            LName = "test5"
-                        });
-                });
-
-            modelBuilder.Entity("CodeFirstMigrations.Entities.Enrollment", b =>
-                {
-                    b.HasOne("CodeFirstMigrations.Entities.Section", "Section")
-                        .WithMany()
-                        .HasForeignKey("SectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CodeFirstMigrations.Entities.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Section");
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("CodeFirstMigrations.Entities.Instructor", b =>

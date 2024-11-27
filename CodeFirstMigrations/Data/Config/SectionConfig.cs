@@ -21,6 +21,12 @@ namespace CodeFirstMigrations.Data.Config
             // Course relationship (M:1)
             builder.HasOne(x => x.Course).WithMany(x => x.sections).HasForeignKey(x => x.CourseId).IsRequired();
 
+            // SectionSchedule relationship (M:M)
+            builder.HasMany(c => c.Schedules).WithMany(x => x.Sections).UsingEntity<SectionSchedule>();
+
+            // Enrollment relationship (M:M)
+            builder.HasMany(c => c.Students).WithMany(x => x.Sections).UsingEntity<Enrollment>();
+
             //Loading data
             builder.HasData(LoadData());
 
