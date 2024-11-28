@@ -11,46 +11,55 @@ namespace QueryData
                 // creating database without migrations
                 await context.Database.EnsureCreatedAsync();
 
-                #region GetMany
-                //var courses = context.Courses;
-                //Console.WriteLine(courses.ToQueryString()); // to get the sql query
-                //foreach (var course in courses)
-                //    Console.WriteLine($"course name: {course.CourseName}, {course.HoursToComplete} hrs., {course.Price.ToString("C")}");
+                #region Server Evaluation
+                //    var courseId = 1;
+                //    var result = context.Sections
+                //        .Where(x => x.CourseId == courseId)
+                //        .Select(x => new // projection
+                //        {
+                //            Id = x.Id,
+                //            Section = x.SectionName
+                //        });
+
+                // ---------------------------- EVALUATED SQL ----------------------------
+
+                //    //DECLARE @__courseId_0 int = 1;
+                //    //SELECT[s].[Id], [s].[SectionName] AS[Section]
+                //    //FROM[Sections] AS[s]
+                //    //WHERE[s].[CourseId] = @__courseId_0
+
+                // ------------------------------------------------------------------------
+                //    Console.WriteLine(result.ToQueryString());
+
+                //    foreach (var item in result)
+                //    {
+                //        Console.WriteLine($"{item.Id} {item.Section}");
+                //    }
+                //}
                 #endregion
 
-                #region Get-Single-One(if more than one will throw ex)
-                //var course = context.Courses.Single(x => x.Id == 1);
-                //Console.WriteLine($"course name: {course.CourseName}, {course.HoursToComplete} hrs., {course.Price.ToString("C")}");
-                //var course = context.Courses.Single(x => x.HoursToComplete == 25);
+                #region Client Evaluation
+                var courseId = 1;
 
-                //Console.WriteLine($"{course.CourseName}, {course.Price.ToString("C")}");
-                #endregion
+                var result = context.Sections
+                    .Where(x => x.CourseId == courseId)
+                    .Select(x => new
+                    {
+                        Id = x.Id,
+                        Section = x.SectionName.Substring(4),
+                        TotalDays = CalculateTotalDays(x.DateRange.StartDate, x.DateRange.EndDate)
+                    });
+                // ---------------------------- EVALUATED SQL ----------------------------
+                //  SELECT [s].[Id], [s].[SectionName], [s].[StartDate], [s].[EndDate]
+                //  FROM [Sections] AS [s]
+                //  WHERE [s].[CourseId] = @__courseId_0
+                // ------------------------------------------------------------------------
+                Console.WriteLine(result.ToQueryString());
 
-                #region Get-First-One-from-group(if nothing throw ex)
-                // var course = context.Courses.First(x => x.HoursToComplete == 25);
-
-                // Console.WriteLine($"{course.CourseName}, {course.Price.ToString("C")}");
-                #endregion
-
-                #region Get-First-One-from-group(if nothing return null)
-                //var course = context.Courses.FirstOrDefault(x => x.HoursToComplete == 999);
-
-                //Console.WriteLine($"{course?.CourseName}, {course?.Price.ToString("C")}");
-                #endregion
-
-                #region Get-Single-One(if nothing return null)
-                // var course = context.Courses.SingleOrDefault(x => x.HoursToComplete == 999);
-
-                // Console.WriteLine($"{course?.CourseName}, {course?.Price.ToString("C")}");
-                #endregion
-
-                #region Get-with-condition
-                //var courses = context.Courses.Where(x => x.Price > 3000); //IQuerable
-
-                //Console.WriteLine(courses.ToQueryString());
-
-                //foreach (var course in courses)
-                //    Console.WriteLine($"course name: {course.CourseName}, {course.HoursToComplete} hrs., {course.Price.ToString("C")}");
+                foreach (var item in result)
+                {
+                    Console.WriteLine($"{item.Id} {item.Section} ({item.TotalDays})");
+                }
                 #endregion
 
             }
