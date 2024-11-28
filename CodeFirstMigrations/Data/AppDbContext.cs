@@ -14,8 +14,8 @@ namespace CodeFirstMigrations.Data
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Participator> Participators { get; set; }
-        //public DbSet<Individual> Individuals { get; set; }
-        //public DbSet<Coporate> Coporates { get; set; }
+        public DbSet<Individual> Individuals { get; set; }
+        public DbSet<Coporate> Coporates { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         #endregion
 

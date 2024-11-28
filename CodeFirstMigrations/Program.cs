@@ -15,7 +15,7 @@ namespace CodeFirstMigrations
             context.Add(Participator1);
             context.Add(Participator2);
             context.SaveChanges();
-            // Table per hierarchy is the default mapping strategy => making one table having the all 3 tables
+            // Table per type mapping strategy 
         }
     }
 }
