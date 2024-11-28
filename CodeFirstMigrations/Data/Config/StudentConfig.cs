@@ -18,6 +18,10 @@ namespace CodeFirstMigrations.Data.Config
             // LName
             builder.Property(x => x.LName).HasColumnType("VARCHAR").HasMaxLength(200);
 
+            // Discriminator
+            builder.HasDiscriminator<string>("ParticipatorType").HasValue<Individual>("INDV").HasValue<Coporate>("COPT");
+            builder.Property("ParticipatorType").HasColumnType("VARCHAR").HasMaxLength(4);
+
             //Loading data
             builder.HasData(LoadData());
 
