@@ -1,22 +1,22 @@
 ﻿using CodeFirstMigrations.Data;
-using CodeFirstMigrations.Entities;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace CodeFirstMigrations
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var context = new AppDbContext();
-            var Participator1 = new Individual { Id = 6, IsIntern = true, YearOfGraduation = 2024, University = "Damietta" };
-            var Participator2 = new Coporate { Id = 7, Company = "Cairo", JobTitle = "BackEnd" };
 
-            context.Add(Participator1);
-            context.Add(Participator2);
-            context.SaveChanges();
-            // Table per concreate mapping strategy 
-            // concreate class is the class that inhert from abstract class
+            // Database Api
+
+            //Creating Database if it does not exist without migrations
+            await context.Database.EnsureCreatedAsync();
+            var sqlScript = context.Database.GenerateCreateScript(); // to generate the sql to create schemas
+            // Delete Database if it exists
+            await context.Database.EnsureDeletedAsync();
         }
     }
 }
