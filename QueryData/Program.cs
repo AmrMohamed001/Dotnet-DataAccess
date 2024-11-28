@@ -1,4 +1,5 @@
-﻿using QueryData.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QueryData.Data;
 
 namespace QueryData
 {
@@ -11,40 +12,40 @@ namespace QueryData
                 // creating database without migrations
                 await context.Database.EnsureCreatedAsync();
 
-                #region Tracking
-                var section = context.Sections.FirstOrDefault(x => x.Id == 1);
+                #region one Join
+                //    var sectionId = 1;
+                //    var sectionQuery = context.Sections
+                //        .Include(x => x.Participants)
+                //        .Where(x => x.Id == sectionId);
 
-                Console.WriteLine("before changing tracked object");
+                //    Console.WriteLine(sectionQuery.ToQueryString());
 
-                Console.WriteLine(section.SectionName);
 
-                section.SectionName = "this is a new section name";
-
-                context.SaveChanges();
-
-                section = context.Sections.FirstOrDefault(x => x.Id == 1); // will change
-
-                Console.WriteLine("after bein changed");
-
-                Console.WriteLine(section.SectionName);
+                //    var section = sectionQuery.FirstOrDefault();
+                //    Console.WriteLine($"section: {section.SectionName}");
+                //    Console.WriteLine($"--------------------");
+                //    foreach (var participant in section.Participants)
+                //        Console.WriteLine($"[{participant.Id}] {participant.FName} {participant.LName}");
                 #endregion
 
-                #region No Tracking
-                //    var section = context.Sections.AsNoTracking().FirstOrDefault(x => x.Id == 1);
+                #region Many Joins
+                var sectionId = 1;
 
-                //    Console.WriteLine("before changing tracked object");
+                var sectionQuery = context.Sections
+                    .Include(x => x.Instructor)
+                    .ThenInclude(x => x.Office)
+                    .Where(x => x.Id == sectionId);
 
-                //    Console.WriteLine(section.SectionName); // BlaBla
+                Console.WriteLine(sectionQuery.ToQueryString());
 
-                //    section.SectionName = "01A51C05";
 
-                //    context.SaveChanges();
+                var section = sectionQuery.FirstOrDefault();
 
-                //    section = context.Sections.FirstOrDefault(x => x.Id == 1); // will no change
+                Console.WriteLine($"section: {section.SectionName} " +
+                    $"[{section.Instructor.FName} " +
+                    $"{section.Instructor.LName} " +
+                    $"({section.Instructor.Office.OfficeName})]");
 
-                //    Console.WriteLine("after bein changed");
-
-                //    Console.WriteLine(section.SectionName);
                 #endregion
             }
         }
