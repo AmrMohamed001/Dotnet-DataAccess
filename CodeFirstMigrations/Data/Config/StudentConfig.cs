@@ -1,4 +1,5 @@
 ﻿using CodeFirstMigrations.Entities;
+using EF014.SeedDataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -25,22 +26,13 @@ namespace CodeFirstMigrations.Data.Config
             builder.UseTptMappingStrategy(); // TablePerType
 
             //Loading data
-            builder.HasData(LoadData());
+            builder.HasData(SeedData.LoadCorporates());
+            builder.HasData(SeedData.LoadIndividuals());
 
             builder.ToTable("Participators");
 
         }
 
-        private static List<Instructor> LoadData()
-        {
-            return new List<Instructor>
-            {
-                new Instructor { Id = 1,FName="Ahmed",LName = "test1",OfficeId=1},
-                new Instructor { Id = 2,FName="Mohamed",LName = "test2",OfficeId=2},
-                new Instructor { Id = 3,FName="Amr", LName = "test3", OfficeId = 3},
-                new Instructor { Id = 4,FName="Salah" , LName = "test4", OfficeId = 4},
-                new Instructor { Id = 5,FName="Max" , LName = "test5", OfficeId = 5},
-            };
-        }
+
     }
 }
