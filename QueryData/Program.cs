@@ -16,13 +16,7 @@ namespace QueryData
                 var section = context.Sections
                     .FirstOrDefault(x => x.Id == sectionId);
 
-                // Explicit Loading
-                var query = context.Entry(section).Collection(x => x.Participants).Query();
-
-                Console.WriteLine($"section: {section.SectionName}");
-                Console.WriteLine($"--------------------");
-
-                foreach (var participant in query)
+                foreach (var participant in section.Participants)
                     Console.WriteLine($"[{participant.Id}] {participant.FName} {participant.LName}");
             }
         }
