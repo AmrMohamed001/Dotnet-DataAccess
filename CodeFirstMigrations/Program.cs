@@ -15,7 +15,8 @@ namespace CodeFirstMigrations
             context.Add(Participator1);
             context.Add(Participator2);
             context.SaveChanges();
-            // Table per type mapping strategy 
+            // Table per concreate mapping strategy 
+            // concreate class is the class that inhert from abstract class
         }
     }
 }

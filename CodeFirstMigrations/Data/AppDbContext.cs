@@ -17,6 +17,8 @@ namespace CodeFirstMigrations.Data
         public DbSet<Individual> Individuals { get; set; }
         public DbSet<Coporate> Coporates { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<MultipleChoiceQuiz> MultipleChoiceQuizes { get; set; }
+        public DbSet<TrueAndFalseQuiz> TrueAndFalseQuizes { get; set; }
         #endregion
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
