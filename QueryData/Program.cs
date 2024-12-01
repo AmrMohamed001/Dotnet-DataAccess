@@ -8,27 +8,41 @@ namespace QueryData
         {
             using (var context = new AppDbContext())
             {
-                #region left Outer Join
+                #region Group By
 
                 #region Query syntax
-                var sectionInstructorQuerySyntax =
-                        (from s in context.Sections // 200
-                         from i in context.Instructors // 100
-                         select new
-                         {
-                             s.SectionName,
-                             i.FName
-                         }).ToList();
+                var instructorSections =
+                    from s in context.Sections
+                    group s by s.Instructor
+                    into g
+                    select new
+                    {
+                        Key = g.Key,
+                        TotalSections = g.Count()
+                    };
+
+                foreach (var item in instructorSections)
+                {
+                    Console.WriteLine($"{item.Key.FName}" +
+                        $"==> Total Sections #[{item.TotalSections}]");
+                }
                 #endregion
 
                 #region Method syntax
-                var sectionInstructorMethodSyntax = context.Sections
-                .SelectMany(
-                    s => context.Instructors,
-                    (s, i) => new { s.SectionName, i.FName }
-                ).ToList();
+                var instructorSections =
+                    context.Sections.GroupBy(x => x.Instructor)
+                    .Select(x => new
+                    {
+                        Key = x.Key,
+                        TotalSections = x.Count()
+                    });
 
-                Console.WriteLine(sectionInstructorMethodSyntax.Count());
+
+                foreach (var item in instructorSections)
+                {
+                    Console.WriteLine($"{item.Key.FName} " +
+                        $"==> Total Sections #[{item.TotalSections}]");
+                }
                 #endregion
 
                 #endregion
