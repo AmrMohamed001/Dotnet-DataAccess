@@ -8,31 +8,47 @@ namespace QueryData
         {
             using (var context = new AppDbContext())
             {
-                #region Inner Join
+                #region left Outer Join
 
                 #region Query syntax
-                var InnerJoinQuerySyntax =
+                var LeftJoinQuerySyntax =
                 (from c in context.Courses
                  join s in context.Sections
-                 on c.Id equals s.CourseId
+                 on c.Id equals s.CourseId into Vacancy
+                 from va in Vacancy.DefaultIfEmpty()
                  select new
                  {
                      c.CourseName,
-                     s.SectionName
+                     va.SectionName,
+                     Participants = va != null ? va.Participants : null,
                  }).ToList();
-                //foreach (var x in InnerJoinQuerySyntax)
+                //foreach (var x in LeftJoinQuerySyntax)
                 //    Console.WriteLine(x);
                 #endregion
 
                 #region Method syntax
-                var InnerJoinMethodSyntax = context.Courses.Join(context.Sections, c => c.Id, s => s.CourseId,
-                    (c, s) => new
+                var officeOccupancyMethodSyntax = context.Offices
+                .GroupJoin(
+                    context.Instructors,
+                    o => o.Id,
+                    i => i.OfficeId,
+                    (office, instructor) => new { office, instructor }
+                )
+                .SelectMany(
+                    ov => ov.instructor.DefaultIfEmpty(),
+                    (ov, instructor) => new
                     {
-                        c.CourseName,
-                        s.SectionName
-                    });
-                //foreach (var x in InnerJoinMethodSyntax)
-                //    Console.WriteLine(x);
+                        OfficeId = ov.office.Id,
+                        Name = ov.office.OfficeName,
+                        Location = ov.office.OfficeLocation,
+                        Instructor = instructor != null ? instructor.FName : "<<EMPTY>>"
+                    }
+                ).ToList();
+
+                foreach (var office in officeOccupancyMethodSyntax)
+                {
+                    Console.WriteLine($"{office.Name} -> {office.Instructor}");
+                }
                 #endregion
 
                 #endregion
