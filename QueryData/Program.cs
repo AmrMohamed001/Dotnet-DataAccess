@@ -1,4 +1,5 @@
-﻿using QueryData.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QueryData.Data;
 
 namespace QueryData
 {
@@ -8,16 +9,49 @@ namespace QueryData
         {
             using (var context = new AppDbContext())
             {
-                // creating database without migrations
-                await context.Database.EnsureCreatedAsync();
+                #region proper projection (select) reduce network traffic and reduce the effect on app performance
+                //var coursesProjection = context.Courses.AsNoTracking()
+                //    .Select(c =>
+                //    new
+                //    {
+                //        CourseId = c.Id,
+                //        CourseName = c.CourseName,
+                //        Hours = c.HoursToComplete,
+                //        Section = c.Sections.Select(s =>
+                //        new
+                //        {
+                //            SectionId = s.Id,
+                //            SectionName = s.SectionName,
+                //            DateRate = s.DateRange.ToString(),
+                //            TimeSlot = s.TimeSlot.ToString()
+                //        }),
+                //        Reviews = c.Reviews.Select(r =>
+                //        new
+                //        {
+                //            FeedBack = r.Feedback,
+                //            CreateAt = r.CreatedAt
+                //        })
+                //    }).ToList();
+                #endregion
 
-                var sectionId = 1;
+                #region Spliting the query
+                //var courses1 = context.Courses
+                //    .Include(x => x.Sections)
+                //    .Include(x => x.Reviews)
+                //    .AsSplitQuery() // explicit
+                //    .ToList();
 
-                var section = context.Sections
-                    .FirstOrDefault(x => x.Id == sectionId);
+                //var courses2 = context.Courses
+                //  .Include(x => x.Sections)
+                //  .Include(x => x.Reviews) // split by config
+                //  .ToList();
 
-                foreach (var participant in section.Participants)
-                    Console.WriteLine($"[{participant.Id}] {participant.FName} {participant.LName}");
+                var courses3 = context.Courses
+                .Include(x => x.Sections)
+                .Include(x => x.Reviews) // split by config
+                .AsSingleQuery()
+                .ToList();
+                #endregion
             }
         }
     }

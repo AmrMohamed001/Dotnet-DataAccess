@@ -29,7 +29,11 @@ namespace QueryData.Data
 
             var connectionString = config.GetSection("ConnectionStrings").Value;
 
-            optionsBuilder.UseLazyLoadingProxies().UseSqlServer(connectionString);
+            //optionsBuilder.UseLazyLoadingProxies().UseSqlServer(connectionString);
+
+            optionsBuilder.UseSqlServer(connectionString,
+                o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
+                .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
