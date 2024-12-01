@@ -11,44 +11,24 @@ namespace QueryData
                 #region left Outer Join
 
                 #region Query syntax
-                var LeftJoinQuerySyntax =
-                (from c in context.Courses
-                 join s in context.Sections
-                 on c.Id equals s.CourseId into Vacancy
-                 from va in Vacancy.DefaultIfEmpty()
-                 select new
-                 {
-                     c.CourseName,
-                     va.SectionName,
-                     Participants = va != null ? va.Participants : null,
-                 }).ToList();
-                //foreach (var x in LeftJoinQuerySyntax)
-                //    Console.WriteLine(x);
+                var sectionInstructorQuerySyntax =
+                        (from s in context.Sections // 200
+                         from i in context.Instructors // 100
+                         select new
+                         {
+                             s.SectionName,
+                             i.FName
+                         }).ToList();
                 #endregion
 
                 #region Method syntax
-                var officeOccupancyMethodSyntax = context.Offices
-                .GroupJoin(
-                    context.Instructors,
-                    o => o.Id,
-                    i => i.OfficeId,
-                    (office, instructor) => new { office, instructor }
-                )
+                var sectionInstructorMethodSyntax = context.Sections
                 .SelectMany(
-                    ov => ov.instructor.DefaultIfEmpty(),
-                    (ov, instructor) => new
-                    {
-                        OfficeId = ov.office.Id,
-                        Name = ov.office.OfficeName,
-                        Location = ov.office.OfficeLocation,
-                        Instructor = instructor != null ? instructor.FName : "<<EMPTY>>"
-                    }
+                    s => context.Instructors,
+                    (s, i) => new { s.SectionName, i.FName }
                 ).ToList();
 
-                foreach (var office in officeOccupancyMethodSyntax)
-                {
-                    Console.WriteLine($"{office.Name} -> {office.Instructor}");
-                }
+                Console.WriteLine(sectionInstructorMethodSyntax.Count());
                 #endregion
 
                 #endregion
